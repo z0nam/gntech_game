@@ -1,6 +1,6 @@
 # 개요
 
-경남과기대의 2017년 경제학 강의에서 사용할 일련의 협동실험에 관한 otree 소스이다. TEST DEMO version은 다음 [link](https://gntech-test.heroku.com)에서 확인할 수 있다. 
+경남과기대의 2017년 경제학 강의에서 사용할 일련의 협동실험에 관한 otree 소스이다. TEST DEMO version은 다음 [link](http://gntech-test.herokuapp.com)에서 확인할 수 있다. 
 
 # 대강의 개요
 
