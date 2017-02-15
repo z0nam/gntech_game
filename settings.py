@@ -53,13 +53,15 @@ AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 
 
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
+REAL_WORLD_CURRENCY_CODE = 'ECU'
 USE_POINTS = True
 
 
 # e.g. en, de, fr, it, ja, zh-hans
 # see: https://docs.djangoproject.com/en/1.9/topics/i18n/#term-language-code
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ko'
+TIME_ZONE = 'Asia/Seoul'
+USE_TZ = True
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
@@ -67,7 +69,7 @@ INSTALLED_APPS = ['otree']
 # SENTRY_DSN = ''
 
 DEMO_PAGE_INTRO_TEXT = """
-oTree games
+경남과기대의 경제학 수업을 위한 게임 모음
 """
 
 # from here on are qualifications requirements for workers
@@ -99,20 +101,56 @@ mturk_hit_settings = {
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = {
-    'real_world_currency_per_point': 0.000,
+    'real_world_currency_per_point': 1.000,
     'participation_fee': 0.00,
-    'doc': "",
+    'doc': "경남과기대 경제학 실험",
     'mturk_hit_settings': mturk_hit_settings,
 }
 
 
 SESSION_CONFIGS = [
+    {
+        'name': 'ult1',
+        'display_name': '최후통첩게임 1',
+        'num_demo_participants': 2,
+        'app_sequence': ['survey1','ult1','ult1_2','ult1_3','ult1_4'],
+    },
     # {
-    #     'name': '...',
-    #     'display_name': '...',
-    #     'num_demo_participants': ...,
-    #     'app_sequence': ['...'],
-    # }
+    #     'name': 'ult2',
+    #     'display_name': '최후통첩게임 2',
+    #     'num_demo_participants': 2,
+    #     'app_sequence': ['ult2'],
+    # },
+    # {
+    #     'name': 'dic1',
+    #     'display_name': '독재자게임 1',
+    #     'num_demo_participants': 2,
+    #     'app_sequence': ['dic1','dic1_2'],
+    # },
+    # {
+    #     'name': 'dic2',
+    #     'display_name': '독재자게임 2',
+    #     'num_demo_participants': 2,
+    #     'app_sequence': ['quiz1','dic2'],
+    # },
+    # {
+    #     'name': 'pgg1',
+    #     'display_name': '공공재게임 1',
+    #     'num_demo_participants': 5,
+    #     'app_sequence': ['trust','pgg1'],
+    # },
+    # {
+    #     'name': 'pgg2',
+    #     'display_name': '공공재게임 2',
+    #     'num_demo_participants': 5,
+    #     'app_sequence': ['trust','pgg2','pgg2_2','pgg2_3'],
+    # },
+    # {
+    #     'name': 'pwyw',
+    #     'display_name': '자발적 가격지불전략',
+    #     'num_demo_participants': 2,
+    #     'app_sequence': ['pwyw'],
+    # },
 ]
 
 # anything you put after the below line will override
