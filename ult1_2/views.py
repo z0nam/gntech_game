@@ -1,7 +1,7 @@
 from otree.api import Currency as c, currency_range
 from . import models
 from ._builtin import Page, WaitPage
-from .models import Constants
+from .models import Constants, Player
 import random
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -9,14 +9,12 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %
 
 class ShuffleWaitPage(WaitPage):
     wait_for_all_groups = True
-# ult1의 group_matrix 를 가지고 와서 p1과 p2를 swap한다. 
+# ult1의 group_matrix 를 가지고 와서 p1과 p2를 swap한다.
     def after_all_players_arrive(self):
-        prev_group_matrix = self.session.vars[groupSetting]
+        prev_group_matrix = self.session.vars['groupSetting']
         new_group_matrix = []
         for grp in prev_group_matrix:
-            p1 = grp.pop()
-            p2 = grp.pop()
-            new_group = [p2,p1]
+            new_group = [self.get_player_by_pid(grp[1]),self.get_player_by_pid(grp[0])]
             new_group_matrix.append(new_group)
 
         self.subsession.set_group_matrix(new_group_matrix)
@@ -29,6 +27,8 @@ class ShuffleWaitPage(WaitPage):
         def is_displayed(self):
             return self.round_number==1
 
+    def get_player_by_pid(self,pid):
+        return Player.objects.get(pk=pid)
 
 class Introduction(Page):
     pass
