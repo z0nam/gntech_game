@@ -2,12 +2,32 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Page title
+    결과
 {% endblock %}
 
 {% block content %}
 
+<p>
+  {% if player.id_in_group == 1 %}
+    당신은 {{ Constants.endowment }}의 주어진 보상 중 {{group.amount_offered}}의 보상을 상대방에게 제안했고, 상대방은 당신의 제안을
+    {% if group.offer_accepted %}
+      수락
+    {% else %}
+      거절
+    {% endif %}
+    했습니다.
+  {% else %}
+    상대방은 {{Constants.endowment }}의 주어진 보상 중 {{group.amount_offered}}의 보상을 제안했고, 당신은 그 제안을
+    {% if group.offer_accepted %}
+      수락
+    {% else %}
+      거절
+    {% endif %}
+    했습니다.
+  {% endif %}
+</p>
+<p>
+  따라서, 당신의 보상은 {{player.payoff}} 입니다. 
+</p>
     {% next_button %}
 {% endblock %}
-
-

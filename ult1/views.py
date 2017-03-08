@@ -91,6 +91,7 @@ class ShuffleWaitPage(WaitPage):
             group_matrix.append(new_group)
 
         self.subsession.set_group_matrix(group_matrix)
+        self.session.vars[groupSetting]=group_matrix
 
 # 게임을 여러 라운드 할 경우에는 나머지 라운드의 그룹도 동일하게 설정하도록 한다.
         if Constants.num_rounds > 1:
