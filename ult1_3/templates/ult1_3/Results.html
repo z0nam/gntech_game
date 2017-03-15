@@ -2,12 +2,41 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Page title
+    결과
 {% endblock %}
 
 {% block content %}
 
+<p>결과와 응답이 저장되었습니다. 다음 게임으로 진행합니다. </p>
+<p>
+  {% if player.is_exception %}
+
+    당신은 참가하지 못했기 때문에 게임의 결과와 응답은 별도의 기준에 따라 평가됩니다. 진행자에게 본인이 참가하지 못했음을 명시적으로 알려주시기 바랍니다.
+
+  {% else %}
+
+    {% if player.id_in_group == 1 %}
+      당신은 {{ Constants.endowment }}의 주어진 보상 중 {{group.amount_offered}}의 보상을 상대방에게 제안했고, 상대방은 당신의 제안을
+      {% if group.offer_accepted %}
+        수락
+      {% else %}
+        거절
+      {% endif %}
+      했습니다.
+    {% else %}
+      상대방은 {{Constants.endowment }}의 주어진 보상 중 {{group.amount_offered}}의 보상을 제안했고, 당신은 그 제안을
+      {% if group.offer_accepted %}
+        수락
+      {% else %}
+        거절
+      {% endif %}
+      했습니다.
+    {% endif %}
+    <p>
+      따라서, 당신의 보상은 {{player.payoff}} 입니다.
+    </p>
+  {% endif %}
+</p>
+
     {% next_button %}
 {% endblock %}
-
-

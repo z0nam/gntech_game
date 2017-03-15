@@ -14,7 +14,10 @@ class ShuffleWaitPage(WaitPage):
         prev_group_matrix = self.session.vars['groupSetting']
         new_group_matrix = []
         for grp in prev_group_matrix:
-            new_group = [self.get_player_by_pid(grp[1]),self.get_player_by_pid(grp[0])]
+            if len(grp)!=2:
+                new_group=[self.get_player_by_pid(grp[0])]
+            else:
+                new_group = [self.get_player_by_pid(grp[1]),self.get_player_by_pid(grp[0])]
             new_group_matrix.append(new_group)
 
         self.subsession.set_group_matrix(new_group_matrix)

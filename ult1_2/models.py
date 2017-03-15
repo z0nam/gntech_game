@@ -26,7 +26,7 @@ Q1-2 당신은 파란색을 좋아하시나요?
 
 class Constants(BaseConstants):
     name_in_url = 'ult1_2'
-    players_per_group = 2
+    players_per_group = None
     endowment = c(10000)
     payoff_if_rejected = c(0)
     offer_incr = c(1000)
@@ -51,6 +51,8 @@ class Group(BaseGroup):
     offer_accepted = models.BooleanField()
 
     def set_payoffs(self): # 1명 그룹이 있을 경우에는 이 부분을 통과할 수 없어야 한다. view 차원에서 아예 블로킹 되어 있어야 함.
+        if len(self.get_players())!=2:
+            return
         p1, p2 = self.get_players()
         if self.offer_accepted:
             p1.payoff = Constants.endowment - self.amount_offered

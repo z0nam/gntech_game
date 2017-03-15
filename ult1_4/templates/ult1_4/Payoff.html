@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    최종보상
+{% endblock %}
+
+{% block content %}
+
+<h4>수고하셨습니다!</h4>
+
+<p>당신의 최종 보상 산출 결과는 다음과 같습니다. </p>
+
+<table class="table table-bordered">
+  <thead class="thead thead-inverse">
+    <tr>
+      {% for game in player.get_prev_list %}
+        <td>{{game}}</td>
+      {% endfor %}
+      <td>총합</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% for payoff in player.get_prev_payoffs %}
+        <td>{{payoff}}</td>
+      {% endfor %}
+      <td>{{player.participant.payoff}}</td>
+    </tr>
+  </tbody>
+</table>
+
+{% endblock content %}

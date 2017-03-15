@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    당신은 조편성에 포함되지 않았습니다.
+{% endblock %}
+
+{% block content %}
+<p>이 게임은 그룹당 특정한 사람 수가 참가해야만 가능한 게임입니다. 당신은 그룹인원수가 맞지 않아 현재의 게임에는 참가하지 못합니다. 보상은 지시자가 정하는 방식으로 지정해드리게 될 것입니다. 게임이 끝날때까지 기다려 주시기 바랍니다. 이에 대해 명시적으로 이야기를 듣지 못했을 경우 지시자에게 문의해 주시기 바랍니다. </p>
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/1.8/ref/templates/language/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+
+    {% next_button %}
+
+{% endblock %}

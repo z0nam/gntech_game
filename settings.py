@@ -112,7 +112,7 @@ SESSION_CONFIGS = [
     {
         'name': 'ult1',
         'display_name': '최후통첩게임 1',
-        'num_demo_participants': 2,
+        'num_demo_participants': 3,
         'app_sequence': ['survey1','ult1','ult1_2','ult1_3','ult1_4'],
     },
     # {

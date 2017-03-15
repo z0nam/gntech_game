@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    ​당신은 <strong>제안자</strong> 입니다.
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/1.8/ref/templates/language/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+  <p>당신은 {{Constants.endowment}}의 보상을 어떻게 상대방과 나눌 것인지 결정할 수 있습니다. 응답자인 상대방에게 제안하고자 하는 금액을 선택하시기 바랍니다. 제안하고 남은 금액은 당신이 가지게 될 것입니다. </p>
+
+{% formfield group.amount_offered with label="당신은 상대방에게 얼마를 제안할 것인가요?" %}
+    {% next_button %}
+
+{% endblock %}

@@ -85,10 +85,14 @@ class ShuffleWaitPage(WaitPage):
                     largerGroup.pop(),
                     largerGroup.pop()
                 ]
+                group_matrix.append(new_group)
             # 만일 한 명만 남았다면 이 사람은 예외 처리를 해야 한다. 이것을 처리하기 위해서는 크게 두 가지 방식이 있다. (1) 게임 밖에서 처리하는 방식. 즉, 이때는 참가자가 홀수일 경우 추첨을 해서 한 사람 빼고 나머지 짝수 인원으로만 하게 해서 절대 이런 상황이 나오지 않게 하는 것인데, 경험상 좋지 않다. (2) 예외처리를 하는 방법. 코딩이 복잡해지는데, 예외 플래그를 만들어서 체크하는 수 밖에 없을 듯하다.
             elif len(largerGroup) == 1:
-                largerGroup.pop().is_exception = True
-            group_matrix.append(new_group)
+                exception_player = largerGroup.pop()
+                for p in exception_player.participant.get_players():
+                    p.is_exception = True
+                new_group = [exception_player]
+                group_matrix.append(new_group)
 
         self.subsession.set_group_matrix(group_matrix)
         group_matrix_id = []
@@ -96,7 +100,7 @@ class ShuffleWaitPage(WaitPage):
         for group in group_matrix:
             group_id = list(p.id for p in group)
             group_matrix_id.append(group_id)
-        self.session.vars['groupSetting'] =  group_matrix_id#ERROR!!!
+        self.session.vars['groupSetting'] =  group_matrix_id
 
         print(group_matrix_id)
 

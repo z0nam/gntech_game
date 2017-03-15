@@ -1,0 +1,19 @@
+<p>
+  당신의 상대는 이전 게임에서 제안자였을 때 다음과 같은 금액을 제시했습니다.
+
+  <table class='table table-bordered'>
+    <thead class="thead thead-inverse">
+      <tr>
+        <th>제안했던 금액</th>
+        <th>당시 상대방의 수락여부</th>
+      </tr>
+    </thead>
+    <tr>
+      {% for result in player.get_partner.get_proposer_history %}
+        <td>{{result.offered}}</td>
+        <td>{{result.accepted}}</td>
+      {% endfor %}
+    </tr>
+
+  </table>
+</p>

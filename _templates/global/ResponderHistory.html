@@ -1,0 +1,19 @@
+<p>
+  당신의 상대는 이전 게임에서 수락자였을 때 다음과 같이 행동했습니다.
+
+  <table class='table table-bordered'>
+    <thead class="thead thead-inverse">
+      <tr>
+        <th>당시 상대방이 제안받은 금액</th>
+        <th>수락했었는지의 여부</th>
+      </tr>
+    </thead>
+    <tr>
+      {% for result in player.get_partner.get_responder_history %}
+        <td>{{result.offered}}</td>
+        <td>{{result.accepted}}</td>
+      {% endfor %}
+    </tr>
+
+  </table>
+</p>
