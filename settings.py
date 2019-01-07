@@ -64,7 +64,7 @@ TIME_ZONE = 'Asia/Seoul'
 USE_TZ = True
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
-INSTALLED_APPS = ['otree']
+INSTALLED_APPS = ['otree', 'django_extensions']
 
 # SENTRY_DSN = ''
 

@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    역할 배정을 위한 설문조사
+{% endblock %}
+
+{% block content %}
+{% formfield player.q1 with label="질문1. 당신은 행복하다고 느끼십니까?"%}
+{% formfield player.q2 with label="질문2. 당신은 파란색을 좋아하는 편입니까?"%}
+
+<p>응답을 완료하셨다면 다음 버튼을 눌러주시기 바랍니다. </p>
+    {% next_button %}
+{% endblock %}
