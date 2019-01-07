@@ -70,3 +70,6 @@ class Player(BasePlayer):
             return '제안자'
         if self.id_in_group == 2:
             return '응답자'
+            
+    def get_player_by_pid(self,pid):
+        return Player.objects.get(pk=pid)

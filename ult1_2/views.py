@@ -10,6 +10,7 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %
 class ShuffleWaitPage(WaitPage):
     wait_for_all_groups = True
 # ult1의 group_matrix 를 가지고 와서 p1과 p2를 swap한다.
+
     def after_all_players_arrive(self):
         prev_group_matrix = self.session.vars['groupSetting']
         new_group_matrix = []
@@ -30,8 +31,6 @@ class ShuffleWaitPage(WaitPage):
         def is_displayed(self):
             return self.round_number==1
 
-    def get_player_by_pid(self,pid):
-        return Player.objects.get(pk=pid)
 
 class Introduction(Page):
     pass

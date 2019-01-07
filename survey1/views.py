@@ -15,7 +15,7 @@ class Survey(Page):
         self.player.setProperty()
 
 
-class WaitPage(WaitPage):
+class Page_for_waiting(WaitPage):
 
     def after_all_players_arrive(self):
         pass
@@ -24,5 +24,5 @@ class WaitPage(WaitPage):
 page_sequence = [
     Introduction,
     Survey,
-    WaitPage
+    Page_for_waiting,
 ]
